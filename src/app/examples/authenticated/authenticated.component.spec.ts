@@ -5,23 +5,23 @@ import { TestingModule } from '@testing/utils';
 import { AuthenticatedComponent } from './authenticated.component';
 
 describe('AuthenticatedComponent', () => {
-  let component: AuthenticatedComponent;
-  let fixture: ComponentFixture<AuthenticatedComponent>;
+    let component: AuthenticatedComponent;
+    let fixture: ComponentFixture<AuthenticatedComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [TestingModule],
-      declarations: [AuthenticatedComponent]
-    }).compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [TestingModule],
+            declarations: [AuthenticatedComponent]
+        }).compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AuthenticatedComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AuthenticatedComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

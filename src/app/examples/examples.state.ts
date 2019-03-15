@@ -12,22 +12,22 @@ import { Book, BookState } from './crud/books.model';
 
 export const FEATURE_NAME = 'examples';
 export const selectExamples = createFeatureSelector<State, ExamplesState>(
-  FEATURE_NAME
+    FEATURE_NAME
 );
 export const reducers: ActionReducerMap<ExamplesState> = {
-  todos: todosReducer,
-  stocks: stockMarketReducer,
-  books: bookReducer,
-  form: formReducer
+    todos: todosReducer,
+    stocks: stockMarketReducer,
+    books: bookReducer,
+    form: formReducer
 };
 
 export interface ExamplesState {
-  todos: TodosState;
-  stocks: StockMarketState;
-  form: FormState;
-  books: BookState;
+    todos: TodosState;
+    stocks: StockMarketState;
+    form: FormState;
+    books: BookState;
 }
 
 export interface State extends AppState {
-  examples: ExamplesState;
+    examples: ExamplesState;
 }

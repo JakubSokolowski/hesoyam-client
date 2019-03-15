@@ -12,24 +12,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  imports: [
-    // angular
-    BrowserAnimationsModule,
-    BrowserModule,
+    imports: [
+        // angular
+        BrowserAnimationsModule,
+        BrowserModule,
 
-    // core & shared
-    CoreModule,
-    SharedModule,
+        // core & shared
+        CoreModule,
+        SharedModule,
 
-    // features
-    StaticModule,
-    SettingsModule,
+        // features
+        StaticModule,
+        SettingsModule,
 
-    // app
-    AppRoutingModule
-  ],
-  declarations: [AppComponent],
-  providers: [],
-  bootstrap: [AppComponent]
+        // app
+        AppRoutingModule
+    ],
+    declarations: [AppComponent],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

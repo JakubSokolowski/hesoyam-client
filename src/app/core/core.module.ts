@@ -7,8 +7,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {
-  StoreRouterConnectingModule,
-  RouterStateSerializer
+    StoreRouterConnectingModule,
+    RouterStateSerializer
 } from '@ngrx/router-store';
 
 import { environment } from '@env/environment';
@@ -26,59 +26,61 @@ import { NotificationService } from './notifications/notification.service';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
 
 @NgModule({
-  imports: [
-    // angular
-    CommonModule,
-    HttpClientModule,
+    imports: [
+        // angular
+        CommonModule,
+        HttpClientModule,
 
-    // ngrx
-    StoreModule.forRoot(reducers, { metaReducers }),
-    StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects]),
-    environment.production
-      ? []
-      : StoreDevtoolsModule.instrument({
-          name: 'Angular NgRx Material Starter'
-        }),
+        // ngrx
+        StoreModule.forRoot(reducers, { metaReducers }),
+        StoreRouterConnectingModule.forRoot(),
+        EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects]),
+        environment.production
+            ? []
+            : StoreDevtoolsModule.instrument({
+                  name: 'Angular NgRx Material Starter'
+              }),
 
-    // 3rd party
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
-  ],
-  declarations: [],
-  providers: [
-    NotificationService,
-    LocalStorageService,
-    AuthGuardService,
-    AnimationsService,
-    httpInterceptorProviders,
-    TitleService,
-    { provide: ErrorHandler, useClass: AppErrorHandler },
-    { provide: RouterStateSerializer, useClass: CustomSerializer }
-  ],
-  exports: [TranslateModule]
+        // 3rd party
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
+    ],
+    declarations: [],
+    providers: [
+        NotificationService,
+        LocalStorageService,
+        AuthGuardService,
+        AnimationsService,
+        httpInterceptorProviders,
+        TitleService,
+        { provide: ErrorHandler, useClass: AppErrorHandler },
+        { provide: RouterStateSerializer, useClass: CustomSerializer }
+    ],
+    exports: [TranslateModule]
 })
 export class CoreModule {
-  constructor(
-    @Optional()
-    @SkipSelf()
-    parentModule: CoreModule
-  ) {
-    if (parentModule) {
-      throw new Error('CoreModule is already loaded. Import only in AppModule');
+    constructor(
+        @Optional()
+        @SkipSelf()
+        parentModule: CoreModule
+    ) {
+        if (parentModule) {
+            throw new Error(
+                'CoreModule is already loaded. Import only in AppModule'
+            );
+        }
     }
-  }
 }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(
-    http,
-    `${environment.i18nPrefix}/assets/i18n/`,
-    '.json'
-  );
+    return new TranslateHttpLoader(
+        http,
+        `${environment.i18nPrefix}/assets/i18n/`,
+        '.json'
+    );
 }

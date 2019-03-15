@@ -8,9 +8,9 @@ import { AppState } from '../core.state';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
-  constructor(private store: Store<AppState>) {}
+    constructor(private store: Store<AppState>) {}
 
-  canActivate(): Observable<boolean> {
-    return this.store.pipe(select(selectIsAuthenticated));
-  }
+    canActivate(): Observable<boolean> {
+        return this.store.pipe(select(selectIsAuthenticated));
+    }
 }

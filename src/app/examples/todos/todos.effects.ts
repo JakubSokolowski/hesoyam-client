@@ -13,21 +13,23 @@ export const TODOS_KEY = 'EXAMPLES.TODOS';
 
 @Injectable()
 export class TodosEffects {
-  constructor(
-    private actions$: Actions<Action>,
-    private store: Store<State>,
-    private localStorageService: LocalStorageService
-  ) {}
+    constructor(
+        private actions$: Actions<Action>,
+        private store: Store<State>,
+        private localStorageService: LocalStorageService
+    ) {}
 
-  @Effect({ dispatch: false })
-  persistTodos = this.actions$.pipe(
-    ofType(
-      TodosActionTypes.ADD,
-      TodosActionTypes.FILTER,
-      TodosActionTypes.REMOVE_DONE,
-      TodosActionTypes.TOGGLE
-    ),
-    withLatestFrom(this.store.pipe(select(selectTodosState))),
-    tap(([action, todos]) => this.localStorageService.setItem(TODOS_KEY, todos))
-  );
+    @Effect({ dispatch: false })
+    persistTodos = this.actions$.pipe(
+        ofType(
+            TodosActionTypes.ADD,
+            TodosActionTypes.FILTER,
+            TodosActionTypes.REMOVE_DONE,
+            TodosActionTypes.TOGGLE
+        ),
+        withLatestFrom(this.store.pipe(select(selectTodosState))),
+        tap(([action, todos]) =>
+            this.localStorageService.setItem(TODOS_KEY, todos)
+        )
+    );
 }

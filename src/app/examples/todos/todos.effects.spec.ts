@@ -10,40 +10,40 @@ import { TodosEffects, TODOS_KEY } from './todos.effects';
 import { TodosState } from './todos.model';
 
 describe('TodosEffects', () => {
-  let localStorage: jasmine.SpyObj<LocalStorageService>;
-  let store: jasmine.SpyObj<Store<State>>;
+    let localStorage: jasmine.SpyObj<LocalStorageService>;
+    let store: jasmine.SpyObj<Store<State>>;
 
-  beforeEach(() => {
-    localStorage = jasmine.createSpyObj('LocalStorageService', ['setItem']);
-    store = jasmine.createSpyObj('store', ['pipe']);
-  });
-
-  describe('persistTodos', () => {
-    it('should not dispatch any action', () => {
-      const actions$ = new Actions();
-      const effect = new TodosEffects(actions$, store, localStorage);
-      const metadata = getEffectsMetadata(effect);
-
-      expect(metadata.persistTodos).toEqual({ dispatch: false });
+    beforeEach(() => {
+        localStorage = jasmine.createSpyObj('LocalStorageService', ['setItem']);
+        store = jasmine.createSpyObj('store', ['pipe']);
     });
 
-    it('should call setItem on LocalStorageService for any action', () => {
-      const todosState: TodosState = {
-        items: [{ id: '1', name: 'Test ToDo', done: false }],
-        filter: 'ALL'
-      };
-      store.pipe.and.returnValue(of(todosState));
-      const persistAction = new ActionTodosToggle({ id: 'a' });
-      const source = cold('a', { a: persistAction });
-      const actions = new Actions(source);
-      const effect = new TodosEffects(actions, store, localStorage);
+    describe('persistTodos', () => {
+        it('should not dispatch any action', () => {
+            const actions$ = new Actions();
+            const effect = new TodosEffects(actions$, store, localStorage);
+            const metadata = getEffectsMetadata(effect);
 
-      effect.persistTodos.subscribe(() => {
-        expect(localStorage.setItem).toHaveBeenCalledWith(
-          TODOS_KEY,
-          todosState
-        );
-      });
+            expect(metadata.persistTodos).toEqual({ dispatch: false });
+        });
+
+        it('should call setItem on LocalStorageService for any action', () => {
+            const todosState: TodosState = {
+                items: [{ id: '1', name: 'Test ToDo', done: false }],
+                filter: 'ALL'
+            };
+            store.pipe.and.returnValue(of(todosState));
+            const persistAction = new ActionTodosToggle({ id: 'a' });
+            const source = cold('a', { a: persistAction });
+            const actions = new Actions(source);
+            const effect = new TodosEffects(actions, store, localStorage);
+
+            effect.persistTodos.subscribe(() => {
+                expect(localStorage.setItem).toHaveBeenCalledWith(
+                    TODOS_KEY,
+                    todosState
+                );
+            });
+        });
     });
-  });
 });

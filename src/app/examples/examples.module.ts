@@ -27,47 +27,47 @@ import { NotificationsComponent } from './notifications/components/notifications
 import { ExamplesEffects } from './examples.effects';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    ExamplesRoutingModule,
-    StoreModule.forFeature(FEATURE_NAME, reducers),
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    }),
-    EffectsModule.forFeature([
-      ExamplesEffects,
-      TodosEffects,
-      StockMarketEffects,
-      BooksEffects,
-      FormEffects
-    ])
-  ],
-  declarations: [
-    ExamplesComponent,
-    TodosContainerComponent,
-    StockMarketContainerComponent,
-    ParentComponent,
-    ChildComponent,
-    AuthenticatedComponent,
-    CrudComponent,
-    FormComponent,
-    NotificationsComponent
-  ],
-  providers: [StockMarketService]
+    imports: [
+        SharedModule,
+        ExamplesRoutingModule,
+        StoreModule.forFeature(FEATURE_NAME, reducers),
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            },
+            isolate: true
+        }),
+        EffectsModule.forFeature([
+            ExamplesEffects,
+            TodosEffects,
+            StockMarketEffects,
+            BooksEffects,
+            FormEffects
+        ])
+    ],
+    declarations: [
+        ExamplesComponent,
+        TodosContainerComponent,
+        StockMarketContainerComponent,
+        ParentComponent,
+        ChildComponent,
+        AuthenticatedComponent,
+        CrudComponent,
+        FormComponent,
+        NotificationsComponent
+    ],
+    providers: [StockMarketService]
 })
 export class ExamplesModule {
-  constructor() {}
+    constructor() {}
 }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(
-    http,
-    `${environment.i18nPrefix}/assets/i18n/examples/`,
-    '.json'
-  );
+    return new TranslateHttpLoader(
+        http,
+        `${environment.i18nPrefix}/assets/i18n/examples/`,
+        '.json'
+    );
 }

@@ -11,16 +11,18 @@ export const FORM_KEY = 'EXAMPLES.FORM';
 
 @Injectable()
 export class FormEffects {
-  constructor(
-    private actions$: Actions<Action>,
-    private localStorageService: LocalStorageService
-  ) {}
+    constructor(
+        private actions$: Actions<Action>,
+        private localStorageService: LocalStorageService
+    ) {}
 
-  @Effect({ dispatch: false })
-  persistForm = this.actions$.pipe(
-    ofType<ActionFormUpdate>(FormActionTypes.UPDATE),
-    tap(action =>
-      this.localStorageService.setItem(FORM_KEY, { form: action.payload.form })
-    )
-  );
+    @Effect({ dispatch: false })
+    persistForm = this.actions$.pipe(
+        ofType<ActionFormUpdate>(FormActionTypes.UPDATE),
+        tap(action =>
+            this.localStorageService.setItem(FORM_KEY, {
+                form: action.payload.form
+            })
+        )
+    );
 }

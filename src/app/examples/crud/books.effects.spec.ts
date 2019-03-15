@@ -46,7 +46,7 @@ describe('BooksEffects', () => {
             const actions = new Actions(source);
             const effects = new BooksEffects(actions, store, localStorage);
 
-            Leffects.persistBooks.subscribe(() => {
+            effects.persistBooks.subscribe(() => {
                 expect(localStorage.setItem).toHaveBeenCalledWith(
                     BOOKS_KEY,
                     booksState

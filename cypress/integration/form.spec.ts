@@ -1,6 +1,6 @@
 describe('Form Actions', () => {
     beforeEach(() => {
-        cy.visit('/#/examples/form');
+        cy.visit('/#/sentiment-analysis/form');
     });
 
     it('should be able to input all values', () => {

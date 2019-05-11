@@ -8,16 +8,16 @@ import { TestingModule, MockStore } from '../../../../../testing/utils';
 import { CoreModule } from '../../../../core/index';
 
 import { State } from '../../../examples.state';
-import { StockMarketService } from '../../stock-market.service';
-import { ActionStockMarketRetrieve } from '../../stock-market.actions';
-import { StockMarketState } from '../../stock-market.model';
-import { StockMarketContainerComponent } from './stock-market-container.component';
+import { AssetPriceService } from '../../asset-price.service';
+import { ActionStockMarketRetrieve } from '../../asset-price';
+import { StockMarketState } from '../../asset-price.model';
+import { AssetInsightContainerComponent } from './asset-insight-container.component';
 
-describe('StockMarketContainerComponent', () => {
+describe('AssetInsightContainerComponent', () => {
     let retrieveStockSpy: jasmine.Spy;
 
-    let component: StockMarketContainerComponent;
-    let fixture: ComponentFixture<StockMarketContainerComponent>;
+    let component: AssetInsightContainerComponent;
+    let fixture: ComponentFixture<AssetInsightContainerComponent>;
     let store: MockStore<State>;
 
     const getSpinner = () => fixture.debugElement.query(By.css('mat-spinner'));
@@ -44,11 +44,11 @@ describe('StockMarketContainerComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [CoreModule, TestingModule],
-                providers: [StockMarketService],
-                declarations: [StockMarketContainerComponent]
+                providers: [AssetPriceService],
+                declarations: [AssetInsightContainerComponent]
             }).compileComponents();
 
-            const stockMarketService = TestBed.get(StockMarketService);
+            const stockMarketService = TestBed.get(AssetPriceService);
             retrieveStockSpy = spyOn(
                 stockMarketService,
                 'retrieveStock'
@@ -56,7 +56,7 @@ describe('StockMarketContainerComponent', () => {
 
             store = TestBed.get(Store);
             store.setState(createState({ symbol: '', loading: true }));
-            fixture = TestBed.createComponent(StockMarketContainerComponent);
+            fixture = TestBed.createComponent(AssetInsightContainerComponent);
             component = fixture.componentInstance;
             fixture.detectChanges();
         }));

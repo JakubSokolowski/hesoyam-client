@@ -3,7 +3,7 @@ const book_title = 'The Little Schemer';
 describe('CRUD Actions', () => {
     context('Valid Data', () => {
         beforeEach(() => {
-            cy.visit('/#/examples/crud');
+            cy.visit('/#/sentiment-analysis/crud');
             cy.get('[data-testid="add-crud"]').click();
             cy.get('[placeholder="Title"]').type(book_title);
             cy.get('[placeholder="Author"]').type('Friedman{enter}');
@@ -38,7 +38,7 @@ describe('CRUD Actions', () => {
 
     context('Empty book title and author', () => {
         beforeEach(() => {
-            cy.visit('/#/examples/crud');
+            cy.visit('/#/sentiment-analysis/crud');
             cy.get('[data-testid="add-crud"]').click();
         });
 

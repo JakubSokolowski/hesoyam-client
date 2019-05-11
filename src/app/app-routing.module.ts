@@ -16,7 +16,7 @@ const routes: Routes = [
     },
     {
         path: 'examples',
-        loadChildren: 'app/examples/examples.module#ExamplesModule'
+        loadChildren: 'app/sentiment-analysis/sentiment-analysis.module#SentimentAnalysisModule'
     },
     {
         path: '**',

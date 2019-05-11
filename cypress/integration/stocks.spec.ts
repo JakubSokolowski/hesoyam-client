@@ -1,6 +1,6 @@
 describe('STOCKS Actions', () => {
     beforeEach(() => {
-        cy.visit('/#/examples/stock-market');
+        cy.visit('/#/sentiment-analysis/stock-market');
     });
 
     it('should display data for a valid stock symbol', () => {

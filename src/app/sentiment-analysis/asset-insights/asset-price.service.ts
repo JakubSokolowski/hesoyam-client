@@ -3,19 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Stock } from './stock-market.model';
+import { Stock } from './asset-price.model';
 
-const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
 
 @Injectable()
-export class StockMarketService {
+export class AssetPriceService {
     constructor(private httpClient: HttpClient) {}
 
     retrieveStock(symbol: string): Observable<Stock> {
         return this.httpClient
             .get(
-                PROXY_URL +
-                    `https://api.iextrading.com/1.0/stock/${symbol}/quote`
+                `https://api.iextrading.com/1.0/stock/${symbol}/quote`
             )
             .pipe(
                 map((stock: any) => ({

@@ -21,14 +21,19 @@ export class ExamplesComponent implements OnInit {
     isAuthenticated$: Observable<boolean>;
 
     examples = [
-        { link: 'todos', label: 'anms.examples.menu.todos' },
-        { link: 'stock-market', label: 'anms.examples.menu.stocks' },
-        { link: 'theming', label: 'anms.examples.menu.theming' },
-        { link: 'crud', label: 'anms.examples.menu.crud' },
-        { link: 'form', label: 'anms.examples.menu.form' },
-        { link: 'notifications', label: 'anms.examples.menu.notifications' },
-        { link: 'authenticated', label: 'anms.examples.menu.auth', auth: true }
+        { link: 'asset-insights', label: 'anms.examples.menu.stocks' },
     ];
+
+    // sentiment-analysis = [
+    //   { link: 'todos', label: 'anms.sentiment-analysis.menu.todos' },
+    //   { link: 'stock-market', label: 'anms.sentiment-analysis.menu.stocks' },
+    //   { link: 'asset-insights', label: 'anms.sentiment-analysis.menu.stocks' },
+    //   { link: 'theming', label: 'anms.sentiment-analysis.menu.theming' },
+    //   { link: 'crud', label: 'anms.sentiment-analysis.menu.crud' },
+    //   { link: 'form', label: 'anms.sentiment-analysis.menu.form' },
+    //   { link: 'notifications', label: 'anms.sentiment-analysis.menu.notifications' },
+    //   { link: 'authenticated', label: 'anms.sentiment-analysis.menu.auth', auth: true }
+    // ];
 
     constructor(private store: Store<State>) {}
 

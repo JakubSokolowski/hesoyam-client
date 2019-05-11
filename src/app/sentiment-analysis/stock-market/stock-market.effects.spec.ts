@@ -11,7 +11,7 @@ import { StockMarketEffects, STOCK_MARKET_KEY } from './stock-market.effects';
 import { Stock } from './stock-market.model';
 import { StockMarketService } from './stock-market.service';
 
-describe('StockMarketEffects', () => {
+describe('AssetPriceEffects', () => {
     let localStorage: jasmine.SpyObj<LocalStorageService>;
     let stockMarket: jasmine.SpyObj<StockMarketService>;
 

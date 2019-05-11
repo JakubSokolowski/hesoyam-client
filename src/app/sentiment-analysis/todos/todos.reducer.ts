@@ -6,7 +6,7 @@ import { Todo, TodosState } from './todos.model';
 export const initialState: TodosState = {
     items: [
         { id: uuid(), name: 'Open Todo list example', done: true },
-        { id: uuid(), name: 'Check the other examples', done: false },
+        { id: uuid(), name: 'Check the other sentiment-analysis', done: false },
         {
             id: uuid(),
             name: 'Use Angular ngRx Material Starter in your project',

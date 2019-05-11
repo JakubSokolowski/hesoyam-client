@@ -1,12 +1,12 @@
 const newToDo1 = 'New Todo 1';
 const newToDo2 = 'New Todo 2';
 const existingToDo1 = 'Open Todo list example';
-const existingToDo2 = 'Check the other examples';
+const existingToDo2 = 'Check the other sentiment-analysis';
 const existingToDo3 = 'Use Angular ngRx Material Starter in your project';
 
 describe('TODO Actions', () => {
     beforeEach(() => {
-        cy.visit('/#/examples/todos');
+        cy.visit('/#/sentiment-analysis/todos');
     });
 
     it('should be able to add a new todo with enter or + button click', () => {

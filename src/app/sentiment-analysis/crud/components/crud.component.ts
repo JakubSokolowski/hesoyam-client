@@ -46,12 +46,12 @@ export class CrudComponent {
 
     select(book: Book) {
         this.isEditing = false;
-        this.router.navigate(['examples/crud', book.id]);
+        this.router.navigate(['sentiment-analysis/crud', book.id]);
     }
 
     deselect() {
         this.isEditing = false;
-        this.router.navigate(['examples/crud']);
+        this.router.navigate(['sentiment-analysis/crud']);
     }
 
     edit(book: Book) {
@@ -73,7 +73,7 @@ export class CrudComponent {
     delete(book: Book) {
         this.store.dispatch(new ActionBooksDeleteOne({ id: book.id }));
         this.isEditing = false;
-        this.router.navigate(['examples/crud']);
+        this.router.navigate(['sentiment-analysis/crud']);
     }
 
     save() {
@@ -81,7 +81,7 @@ export class CrudComponent {
             const book = this.bookFormGroup.value;
             this.store.dispatch(new ActionBooksUpsertOne({ book }));
             this.isEditing = false;
-            this.router.navigate(['examples/crud', book.id]);
+            this.router.navigate(['sentiment-analysis/crud', book.id]);
         }
     }
 }

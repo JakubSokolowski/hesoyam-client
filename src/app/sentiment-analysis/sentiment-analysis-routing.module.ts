@@ -7,6 +7,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { ParentComponent } from './theming/parent/parent.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
 import { TodosContainerComponent } from './todos/components/todos-container.component';
+import { AssetInsightContainerComponent } from '@app/sentiment-analysis/asset-insights/components/asset-insight-container/asset-insight-container.component';
 import { StockMarketContainerComponent } from './stock-market/components/stock-market-container/stock-market-container.component';
 import { CrudComponent } from './crud/components/crud.component';
 import { FormComponent } from './form/components/form.component';
@@ -32,6 +33,11 @@ const routes: Routes = [
                 component: StockMarketContainerComponent,
                 data: { title: 'anms.examples.menu.stocks' }
             },
+          {
+            path: 'asset-insights',
+            component: AssetInsightContainerComponent,
+            data: { title: 'anms.examples.menu.stocks' }
+          },
             {
                 path: 'theming',
                 component: ParentComponent,
@@ -71,4 +77,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ExamplesRoutingModule {}
+export class SentimentAnalysisRoutingModule {}

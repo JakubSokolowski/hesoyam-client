@@ -4,13 +4,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EMPTY } from 'rxjs';
 
-import { TestingModule, MockStore } from '@testing/utils';
-import { CoreModule } from '@app/core';
+import { TestingModule, MockStore } from '../../../../../testing/utils';
+import { CoreModule } from '../../../../core/index';
 
-import { State } from '../../examples.state';
-import { StockMarketService } from '../stock-market.service';
-import { ActionStockMarketRetrieve } from '../stock-market.actions';
-import { StockMarketState } from '../stock-market.model';
+import { State } from '../../../examples.state';
+import { StockMarketService } from '../../stock-market.service';
+import { ActionStockMarketRetrieve } from '../../stock-market.actions';
+import { StockMarketState } from '../../stock-market.model';
 import { StockMarketContainerComponent } from './stock-market-container.component';
 
 describe('StockMarketContainerComponent', () => {

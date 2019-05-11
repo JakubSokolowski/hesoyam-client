@@ -13,7 +13,7 @@ import { ExamplesRoutingModule } from './examples-routing.module';
 import { ExamplesComponent } from './examples/examples.component';
 import { TodosContainerComponent } from './todos/components/todos-container.component';
 import { TodosEffects } from './todos/todos.effects';
-import { StockMarketContainerComponent } from './stock-market/components/stock-market-container.component';
+import { StockMarketContainerComponent } from './stock-market/components/stock-market-container/stock-market-container.component';
 import { StockMarketEffects } from './stock-market/stock-market.effects';
 import { StockMarketService } from './stock-market/stock-market.service';
 import { ParentComponent } from './theming/parent/parent.component';

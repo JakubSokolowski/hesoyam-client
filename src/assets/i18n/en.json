@@ -10,7 +10,7 @@
     "anms.about.contributors.title": "Contributors",
     "anms.about.get-notified.description": "a Twitter bot that helps you to stay up to date with releases of popular frontend frameworks & libraries!",
     "anms.about.get-notified.follow": "Follow",
-    "anms.about.get-notified.title": "Get notified about new releases",
+    "anms.about.get-notified.title": "Analyze Asset Data",
     "anms.about.get-started": "Get started",
     "anms.features.angular": "Modern powerful framework",
     "anms.features.angular-cli": "A command line interface for Angular",
@@ -60,6 +60,6 @@
     "anms.settings.themes.sticky-header": "Sticky header",
     "anms.settings.themes.title": "Themes",
     "anms.settings.title": "Settings",
-    "anms.title.long": "Angular NgRx Material Starter",
-    "anms.title.short": "Angular Starter"
+    "anms.title.long": "Hesoyam Sentiment Analysis",
+    "anms.title.short": "Hesoyam"
 }

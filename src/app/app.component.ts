@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
     languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn', 'he'];
     navigation = [
         { link: 'about', label: 'anms.menu.about' },
-        { link: 'features', label: 'anms.menu.features' },
         { link: 'examples', label: 'anms.menu.examples' }
     ];
     navigationSideMenu = [

@@ -71,7 +71,7 @@
     "anms.examples.stocks.text4": "Updating symbol query with different symbol will emit action which updates state with loading flag (reducer) and triggers effect for retrieving of selected stock.",
     "anms.examples.stocks.text5": "Actions are debounced and every subsequent request will cancel previous one using",
     "anms.examples.stocks.text6": "Success or error actions are emitted on request completion. Loading spinner is removed and stock info or error message is displayed.",
-    "anms.examples.stocks.title": "Stock market",
+    "anms.examples.stocks.title": "Asset Analysis",
     "anms.examples.theming.child.description": "child works!",
     "anms.examples.theming.child.subtitle": "should be without style",
     "anms.examples.theming.child.title": "childs h1",

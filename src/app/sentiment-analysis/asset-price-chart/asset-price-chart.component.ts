@@ -21,8 +21,9 @@ export class AssetPriceChartComponent implements OnInit {
 
     public financialChartData: any[] = [{
         label: 'TST',
-         data: []
+         data: this.getRandomData(this.initialDateStr, this.barCount)
     }];
+
     public financialChartOptions: ChartOptions = {
         responsive: true,
         maintainAspectRatio: false,

@@ -29,6 +29,9 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
 import { NotificationsComponent } from './notifications/components/notifications.component';
 import { ExamplesEffects } from './examples.effects';
 import { ChartsModule } from 'ng2-charts';
+import {AssetNewsTableComponent} from '@app/sentiment-analysis/asset-news-table/asset-news-table.component';
+import { MatPaginatorModule } from '@angular/material';
+import {MatTableModule} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -36,6 +39,8 @@ import { ChartsModule } from 'ng2-charts';
         SentimentAnalysisRoutingModule,
         StoreModule.forFeature(FEATURE_NAME, reducers),
         ChartsModule,
+        MatPaginatorModule,
+        MatTableModule,
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
@@ -58,6 +63,7 @@ import { ChartsModule } from 'ng2-charts';
         StockMarketContainerComponent,
         AssetPriceChartComponent,
         AssetInsightContainerComponent,
+        AssetNewsTableComponent,
         ParentComponent,
         ChildComponent,
         AuthenticatedComponent,

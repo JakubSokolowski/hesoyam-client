@@ -8,7 +8,7 @@ import { CoreModule } from '@app/core';
 
 import { AssetPriceService } from './asset-price.service';
 
-describe('AssetPriceService', () => {
+describe('BittrexService', () => {
     let httpClientSpy: { get: jasmine.Spy };
 
     beforeEach(() => {

@@ -13,7 +13,7 @@ export class AssetPriceService {
     retrieveStock(symbol: string): Observable<Stock> {
         return this.httpClient
             .get(
-                `https://api.iextrading.com/1.0/stock/${symbol}/quote`
+                ``
             )
             .pipe(
                 map((stock: any) => ({

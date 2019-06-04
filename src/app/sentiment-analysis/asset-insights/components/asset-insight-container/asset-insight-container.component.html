@@ -1,31 +1,56 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 rtl class="main-heading">{{ 'anms.examples.stocks.title' | translate }}</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 rtl class="main-heading">{{ 'anms.examples.stocks.title' | translate }}</h1>
+        </div>
     </div>
-  </div>
-  <div class="column" [ngClass]="routeAnimationsElements" rtl>
-    <ng-container *ngIf="stocks$ | async as stocks">
-      <div>
-        <mat-spinner *ngIf="stocks.loading"></mat-spinner>
-        <mat-card *ngIf="stocks.stock">
-          <mat-card-content>
-            <anms-asset-price-chart></anms-asset-price-chart>
-          </mat-card-content>
-        </mat-card>
-        <p *ngIf="stocks.error" class="error-state">
-          <fa-icon icon="exclamation-triangle" size="3x"></fa-icon>
-          <br><br>
-          <span>
-            {{ 'anms.examples.stocks.error1' | translate }}
-            <span class="symbol">{{stocks.symbol}}</span>
-            {{ 'anms.examples.stocks.error2' | translate }}
-          </span>
-        </p>
-        <asset-news-table></asset-news-table>
-        <br>
-        <br>
-      </div>
-    </ng-container>
-  </div>
+    <div class="column" [ngClass]="routeAnimationsElements" rtl>
+        <ng-container *ngIf="stocks$ | async as stocks">
+            <div>
+                <mat-spinner *ngIf="stocks.loading"></mat-spinner>
+                <mat-card *ngIf="stocks.stock">
+                    <mat-card-header *ngIf="symbols$ | async as symbols">
+                        <mat-form-field>
+                            <mat-label>Available assets</mat-label>
+                            <mat-select [(ngModel)]="currentSymbol">
+                                <mat-option *ngFor="let symbol of symbols" [value]="symbol">
+                                    {{symbol}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   [matDatepicker]="picker"
+                                   placeholder="Date from"
+                                   [min]="minDate | async"
+                                   [max]="maxDate | async"
+                                   [(ngModel)]="currentFromDate"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   [matDatepicker]="picker1"
+                                   placeholder="Date from"
+                                   [min]="minDate | async"
+                                   [max]="maxDate | async"
+                                   [(ngModel)]="currentToDate"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        <a mat-raised-button class="actions-main" color="accent" (click)="onUpdateAssetDataClick()" [ngClass]="routeAnimationsElements">
+                            Update
+                        </a>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <anms-asset-price-chart [currentQuery]="assetPriceQuery">
+                        </anms-asset-price-chart>
+                    </mat-card-content>
+                </mat-card>
+                <asset-news-table [currentQuery]="assetPriceQuery"></asset-news-table>
+            </div>
+        </ng-container>
+    </div>
 </div>

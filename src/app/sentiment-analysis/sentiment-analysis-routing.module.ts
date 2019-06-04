@@ -5,7 +5,7 @@ import { AuthGuardService } from '@app/core';
 
 import { ExamplesComponent } from './examples/examples.component';
 import { ParentComponent } from './theming/parent/parent.component';
-import { AuthenticatedComponent } from './authenticated/authenticated.component';
+import { DataScrapperComponent } from './authenticated/data-scrapper.component';
 import { TodosContainerComponent } from './todos/components/todos-container.component';
 import { AssetInsightContainerComponent } from '@app/sentiment-analysis/asset-insights/components/asset-insight-container/asset-insight-container.component';
 import { StockMarketContainerComponent } from './stock-market/components/stock-market-container/stock-market-container.component';
@@ -24,48 +24,13 @@ const routes: Routes = [
                 pathMatch: 'full'
             },
             {
-                path: 'todos',
-                component: TodosContainerComponent,
-                data: { title: 'anms.examples.menu.todos' }
-            },
-            {
-                path: 'stock-market',
-                component: StockMarketContainerComponent,
-                data: { title: 'anms.examples.menu.stocks' }
-            },
-          {
             path: 'asset-insights',
             component: AssetInsightContainerComponent,
             data: { title: 'anms.examples.menu.stocks' }
           },
             {
-                path: 'theming',
-                component: ParentComponent,
-                data: { title: 'anms.examples.menu.theming' }
-            },
-            {
-                path: 'crud',
-                redirectTo: 'crud/',
-                pathMatch: 'full'
-            },
-            {
-                path: 'crud/:id',
-                component: CrudComponent,
-                data: { title: 'anms.examples.menu.crud' }
-            },
-            {
-                path: 'form',
-                component: FormComponent,
-                data: { title: 'anms.examples.menu.form' }
-            },
-            {
-                path: 'notifications',
-                component: NotificationsComponent,
-                data: { title: 'anms.examples.menu.notifications' }
-            },
-            {
                 path: 'authenticated',
-                component: AuthenticatedComponent,
+                component: DataScrapperComponent,
                 canActivate: [AuthGuardService],
                 data: { title: 'anms.examples.menu.auth' }
             }

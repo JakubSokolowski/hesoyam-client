@@ -22,6 +22,7 @@ export class ExamplesComponent implements OnInit {
 
     examples = [
         { link: 'asset-insights', label: 'anms.examples.menu.stocks' },
+        { link: 'authenticated', label: 'anms.examples.menu.auth', auth: true }
     ];
 
     // sentiment-analysis = [

@@ -1,51 +1,80 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material';
+import { Observable } from 'rxjs';
+import { RedditPost, RedditService } from '@app/sentiment-analysis/asset-news-table/reddit.service';
+import { DataSource } from '@angular/cdk/collections';
+import { PriceSeriesQuery } from '@app/sentiment-analysis/asset-insights/components/asset-insight-container/asset-insight-container.component';
+import { MatSort } from '@angular/material/typings/sort';
 
-/**
- * @title Table with pagination
- */
+export interface RedditPostQuery{
+    subreddit: string;
+    dateFrom: string;
+    dateTo: string;
+}
+
 @Component({
     selector: 'asset-news-table',
     styleUrls: ['asset-news-table.component.css'],
-    templateUrl: 'asset-news-table.component.html',
+    templateUrl: 'asset-news-table.component.html'
 })
-export class AssetNewsTableComponent implements OnInit {
-    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-    dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+export class AssetNewsTableComponent implements OnInit, OnChanges {
+    @Input() currentQuery: PriceSeriesQuery;
+    displayedColumns: string[] = ['date', 'title', 'score', 'numComments'];
+    posts: RedditPostDataSource | null;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
+    constructor(private redditService: RedditService) {
+    }
+
     ngOnInit() {
-        this.dataSource.paginator = this.paginator;
+        this.posts = new RedditPostDataSource(
+            this.redditService,
+            {
+                subreddit: 'Bitcoin',
+                dateFrom: '1530856800',
+                dateTo: '1531213200'
+            }
+        );
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.currentQuery) {
+            this.currentQuery = changes.currentQuery.currentValue;
+            this.posts = new RedditPostDataSource(
+                this.redditService,
+                {
+                    subreddit: 'Bitcoin',
+                    dateFrom: this.currentQuery.dateFromMilis.toString(),
+                    dateTo: this.currentQuery.dateToMilis.toString()
+                }
+            );
+        }
     }
 }
 
-export interface PeriodicElement {
-    name: string;
-    position: number;
-    weight: number;
-    symbol: string;
+export class RedditPostDataSource extends DataSource<any> {
+    private query: RedditPostQuery;
+
+    constructor(
+        private redditService: RedditService,
+        query: RedditPostQuery,
+        private _paginator?: MatPaginator,
+        private _sort?: MatSort
+    ) {
+        super();
+        this.query = query;
+    }
+
+    connect(): Observable<RedditPost[]> {
+        return this.redditService.retrieveRedditPosts(
+            this.query.subreddit,
+            this.query.dateFrom,
+            this.query.dateTo
+        );
+    }
+    disconnect(): void {
+
+    }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-    {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-    {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-    {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-    {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-    {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-    {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-    {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-    {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-    {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-    {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-];

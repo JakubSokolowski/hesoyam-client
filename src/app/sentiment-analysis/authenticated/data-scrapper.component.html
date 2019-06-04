@@ -1,0 +1,32 @@
+<div class="container" rtl>
+    <div class="row">
+        <div class="col-12">
+            <h1 class="main-heading">Scrap Data</h1>
+        </div>
+    </div>
+    <mat-card>
+        <mat-card-header *ngIf="subreddits$ | async as subs">
+            <mat-form-field>
+                <mat-label>Subreddits to scrap</mat-label>
+                <mat-select [(ngModel)]="currentSubreddit">
+                    <mat-option *ngFor="let sub of subs" [value]="sub">
+                        /r/{{sub}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button *ngIf="canStartScrapping()" (click)="toggleScrapping()"  mat-raised-button class="actions-main" color="accent">
+                <mat-icon ngIfcolor="accent" *ngIf="isScrappingOngoing">
+                    <fa-icon icon="pause" color="accent">
+                    </fa-icon>
+                </mat-icon>
+                <mat-icon ngIfcolor="accent" *ngIf="!isScrappingOngoing">
+                    <fa-icon icon="play" color="accent">
+                    </fa-icon>
+                </mat-icon>
+            </button>
+            <p>
+                Scrapped posts: {{scrappedPostsNum}}
+            </p>
+        </mat-card-header>
+    </mat-card>
+</div>

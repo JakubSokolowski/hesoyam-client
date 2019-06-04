@@ -18,20 +18,23 @@ import { AssetPriceChartComponent } from '@app/sentiment-analysis/asset-price-ch
 import { AssetInsightContainerComponent } from '@app/sentiment-analysis/asset-insights/components/asset-insight-container/asset-insight-container.component';
 import { StockMarketEffects } from './stock-market/stock-market.effects';
 import { StockMarketService } from './stock-market/stock-market.service';
-import { AssetPriceService } from '@app/sentiment-analysis/asset-price-chart/asset-price.service';
+import { BittrexService } from '@app/sentiment-analysis/asset-price-chart/bittrex.service';
 import { ParentComponent } from './theming/parent/parent.component';
 import { ChildComponent } from './theming/child/child.component';
 import { CrudComponent } from './crud/components/crud.component';
 import { BooksEffects } from './crud/books.effects';
 import { FormComponent } from './form/components/form.component';
 import { FormEffects } from './form/form.effects';
-import { AuthenticatedComponent } from './authenticated/authenticated.component';
+import { DataScrapperComponent } from './authenticated/data-scrapper.component';
 import { NotificationsComponent } from './notifications/components/notifications.component';
 import { ExamplesEffects } from './examples.effects';
 import { ChartsModule } from 'ng2-charts';
 import {AssetNewsTableComponent} from '@app/sentiment-analysis/asset-news-table/asset-news-table.component';
 import { MatPaginatorModule } from '@angular/material';
+import { MatSortModule } from '@angular/material';
 import {MatTableModule} from '@angular/material';
+import { MatDatepickerModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -39,8 +42,12 @@ import {MatTableModule} from '@angular/material';
         SentimentAnalysisRoutingModule,
         StoreModule.forFeature(FEATURE_NAME, reducers),
         ChartsModule,
-        MatPaginatorModule,
         MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatDatepickerModule,
+        MatSelectModule,
+
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
@@ -66,12 +73,12 @@ import {MatTableModule} from '@angular/material';
         AssetNewsTableComponent,
         ParentComponent,
         ChildComponent,
-        AuthenticatedComponent,
+        DataScrapperComponent,
         CrudComponent,
         FormComponent,
         NotificationsComponent
     ],
-    providers: [StockMarketService, AssetPriceService]
+    providers: [StockMarketService, BittrexService]
 })
 export class SentimentAnalysisModule {
     constructor() {}

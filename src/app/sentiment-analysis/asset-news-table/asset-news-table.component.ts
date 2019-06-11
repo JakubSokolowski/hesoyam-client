@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material';
 import { Observable } from 'rxjs';
 import { RedditPost, RedditService } from '@app/sentiment-analysis/asset-news-table/reddit.service';
 import { DataSource } from '@angular/cdk/collections';
-import { PriceSeriesQuery } from '@app/sentiment-analysis/asset-insights/components/asset-insight-container/asset-insight-container.component';
+import { PriceSeriesQuery } from '@app/sentiment-analysis/asset-insight-container/asset-insight-container.component';
 import { MatSort } from '@angular/material/typings/sort';
 
 export interface RedditPostQuery{

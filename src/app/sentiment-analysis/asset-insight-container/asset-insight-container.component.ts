@@ -1,24 +1,17 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 
-import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../core';
 
-import { selectStockMarket } from '../../asset-price.selectors';
-import { ActionStockMarketRetrieve } from '../../asset-price';
-import { StockMarketState } from '../../asset-price.model';
-import { State } from '../../../examples.state';
-import { BittrexService } from '@app/sentiment-analysis/asset-price-chart/bittrex.service';
-
+import { State } from '../examples.state';
+import { BittrexService } from '../asset-price-chart/bittrex.service';
 
 export interface PriceSeriesQuery {
     symbol: string;
     dateFromMilis: number;
     dateToMilis: number;
 }
-
-
 
 @Component({
     selector: 'anms-stock-market',
@@ -28,7 +21,6 @@ export interface PriceSeriesQuery {
 })
 export class AssetInsightContainerComponent implements OnInit {
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-    stocks$: Observable<StockMarketState>;
     symbols$: Observable<string[]>;
     currentSymbol = 'BTCUSD';
 
@@ -47,18 +39,11 @@ export class AssetInsightContainerComponent implements OnInit {
     constructor(public store: Store<State>, private bittrexService: BittrexService) {}
 
     ngOnInit() {
-        this.stocks$ = this.store.pipe(select(selectStockMarket));
         this.symbols$ = this.bittrexService.retrieveAvailableAssetSymbols();
         this.minDate = this.bittrexService.retrieveAssetStartDate(this.currentSymbol);
         this.maxDate = this.bittrexService.retrieveAssetEndDate(this.currentSymbol);
-        this.stocks$
-            .pipe(take(1))
-            .subscribe(stocks => this.onSymbolChange(stocks.symbol));
     }
 
-    onSymbolChange(symbol: string) {
-        this.store.dispatch(new ActionStockMarketRetrieve({ symbol }));
-    }
 
     onUpdateAssetDataClick() {
         this.assetPriceQuery = {

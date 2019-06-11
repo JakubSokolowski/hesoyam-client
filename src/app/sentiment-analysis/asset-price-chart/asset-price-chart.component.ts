@@ -4,7 +4,7 @@ import { ChartOptions } from 'chart.js';
 import { BaseChartDirective, Color } from 'ng2-charts';
 import { AssetPriceChartData, BittrexService } from '@app/sentiment-analysis/asset-price-chart/bittrex.service';
 import { Observable } from 'rxjs';
-import { PriceSeriesQuery } from '@app/sentiment-analysis/asset-insights/components/asset-insight-container/asset-insight-container.component';
+import { PriceSeriesQuery } from '@app/sentiment-analysis/asset-insight-container/asset-insight-container.component';
 
 @Component({
     selector: 'anms-asset-price-chart',

@@ -5,11 +5,10 @@
         </div>
     </div>
     <div class="column" [ngClass]="routeAnimationsElements" rtl>
-        <ng-container *ngIf="stocks$ | async as stocks">
+        <ng-container *ngIf="symbols$ | async as symbols">
             <div>
-                <mat-spinner *ngIf="stocks.loading"></mat-spinner>
-                <mat-card *ngIf="stocks.stock">
-                    <mat-card-header *ngIf="symbols$ | async as symbols">
+                <mat-card >
+                    <mat-card-header>
                         <mat-form-field>
                             <mat-label>Available assets</mat-label>
                             <mat-select [(ngModel)]="currentSymbol">

@@ -4,7 +4,6 @@ ENTRYPOINT ["/bin/bash"]
 # Manually copy the package.json
 COPY ./package.json /usr/src/app/package.json
 COPY ./package-lock.json /usr/src/app/package-lock.json
-COPY cypress /usr/src/app/cypress
 # Set the work directory to where we copied our source files
 WORKDIR /usr/src/app
 # Install all of our dependencies

@@ -50,7 +50,9 @@ import {
     faLightbulb,
     faWindowMaximize,
     faStream,
-    faBook
+    faBook,
+    faPlay,
+    faPause
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faGithub,
@@ -88,7 +90,9 @@ library.add(
     faLightbulb,
     faWindowMaximize,
     faStream,
-    faBook
+    faBook,
+    faPlay,
+    faPause
 );
 
 import { BigInputComponent } from './big-input/big-input.component';

@@ -1,0 +1,19 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+.mat-column-title {
+    width: 65%;
+}
+
+
+th, td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

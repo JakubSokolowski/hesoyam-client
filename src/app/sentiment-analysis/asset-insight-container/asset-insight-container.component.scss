@@ -1,0 +1,68 @@
+.main-heading {
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card {
+    box-shadow: black;
+    margin-bottom: 20px;
+    span {
+        float: right;
+    }
+
+    mat-card-title {
+        margin-bottom: 5px;
+    }
+
+    mat-card-subtitle {
+        text-align: right;
+
+        fa-icon {
+            width: 8px;
+        }
+    }
+
+    mat-card-content {
+        text-align: center;
+    }
+    mat-card-header {
+        mat-form-field {
+            width: 20%;
+            margin-right: 20px;
+        }
+        a {
+            margin-top: 10px;
+            margin-right: auto;
+            width: 15%;
+            font-size: Large;
+            height: 100%;
+        }
+
+    }
+
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+.error-state {
+    text-align: center;
+    padding: 20px;
+
+    mat-icon {
+        width: 54px;
+        font-size: 48px;
+    }
+
+    > span {
+        opacity: 0.4;
+    }
+    .symbol {
+        font-weight: bold;
+    }
+}

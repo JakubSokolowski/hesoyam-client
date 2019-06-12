@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 rtl class="main-heading">{{ 'anms.examples.stocks.title' | translate }}</h1>
+        </div>
+    </div>
+    <div class="column" [ngClass]="routeAnimationsElements" rtl>
+        <ng-container *ngIf="symbols$ | async as symbols">
+            <div>
+                <mat-card >
+                    <mat-card-header>
+                        <mat-form-field>
+                            <mat-label>Available assets</mat-label>
+                            <mat-select [(ngModel)]="currentSymbol">
+                                <mat-option *ngFor="let symbol of symbols" [value]="symbol">
+                                    {{symbol}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   [matDatepicker]="picker"
+                                   placeholder="Date from"
+                                   [min]="minDate | async"
+                                   [max]="maxDate | async"
+                                   [(ngModel)]="currentFromDate"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   [matDatepicker]="picker1"
+                                   placeholder="Date from"
+                                   [min]="minDate | async"
+                                   [max]="maxDate | async"
+                                   [(ngModel)]="currentToDate"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        <a mat-raised-button class="actions-main" color="accent" (click)="onUpdateAssetDataClick()" [ngClass]="routeAnimationsElements">
+                            Update
+                        </a>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <anms-asset-price-chart [currentQuery]="assetPriceQuery">
+                        </anms-asset-price-chart>
+                    </mat-card-content>
+                </mat-card>
+                <asset-news-table [currentQuery]="assetPriceQuery"></asset-news-table>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,16 +1,16 @@
-# base image
-FROM node:9.6.1
+FROM node:9.6.1 as npm_builder
+RUN mkdir /usr/hesoyam-client
+COPY ./package.json /usr/hesoyam-client
+COPY ./package-lock.json /usr/hesoyam-client
 
-# set working directory (also creates two folders needed for cypress)
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
-# install app and cache app dependencies
-COPY . /usr/src/app
+WORKDIR /usr/hesoyam-client
 RUN npm install --silent
 
-# start app
-CMD ["npm", "run", "docker-start"]
+FROM npm_builder as builder
+COPY . /usr/hesoyam-client
+ENV PATH /usr/hesoyam-client/node_modules/.bin:$PATH
+WORKDIR /usr/hesoyam-client
+RUN npm run build
+
+FROM nginx
+COPY --from=builder /usr/hesoyam-client/dist /usr/share/nginx/html

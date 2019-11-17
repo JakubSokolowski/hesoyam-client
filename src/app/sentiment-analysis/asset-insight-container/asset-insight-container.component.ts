@@ -45,6 +45,8 @@ export class AssetInsightContainerComponent implements OnInit {
     }
 
 
+
+
     onUpdateAssetDataClick() {
         this.assetPriceQuery = {
             symbol: this.currentSymbol,

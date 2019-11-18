@@ -48,7 +48,7 @@ export class DataScrapperComponent implements OnInit, OnDestroy {
     }
 
     executeScrapStep() {
-        const limit = 1;
+        const limit = 10;
         if (!!this.date && this.anyPostsLeftToScrap && this.isScrappingOngoing) {
             console.log('Scrap start')
             this.posts = this.redditService.scrapSubmissions(this.currentSubreddit, this.date, limit);

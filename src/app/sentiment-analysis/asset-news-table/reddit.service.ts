@@ -26,7 +26,7 @@ export class RedditService {
         console.log(subreddit, dateFrom, dateTo);
         return this.httpClient
             .get(
-                `http://localhost:8081/reddit/${subreddit}/${dateFrom}/${dateTo}`
+                `http://localhost:4200/reddit/${subreddit}/${dateFrom}/${dateTo}`
             ).pipe(
                 map((posts: any[]) => {
                     return posts.map(post => {
@@ -44,7 +44,7 @@ export class RedditService {
     retrieveAvailableSubreddits(): Observable<string[]> {
         return this.httpClient
             .get(
-                `http://localhost:8081/reddit/subreddits`
+                `http://localhost:4200/reddit/subreddits`
             ).pipe(
                 map((subs: string[]) => subs)
             );
@@ -53,7 +53,7 @@ export class RedditService {
     retrieveLatestScrappedSubimssionDate(subreddit: string): Observable<Date> {
         return this.httpClient
             .get(
-                `http://localhost:8081/reddit/newest/${subreddit}`
+                `http://localhost:4200/reddit/newest/${subreddit}`
             ).pipe(
                 map((post: any) =>
                     new Date(Number.parseInt(post.createdUtc, 10) * 1000)
@@ -109,7 +109,7 @@ export class RedditService {
                 'Content-Type': 'application/json'
             })
         };
-        const url = 'http://localhost:8081/reddit/newposts';
+        const url = 'http://localhost:4200/reddit/newposts';
         return this.httpClient.post(url, data, httpOptions).pipe();
     }
 }

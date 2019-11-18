@@ -32,7 +32,7 @@ export class BittrexService {
         console.log(symbol, dateFrom, dateTo);
         return this.httpClient
         .get(
-        `http://localhost:8081/bittrex/${symbol}/${dateFrom}/${dateTo}`
+        `http://localhost:4200/bittrex/${symbol}/${dateFrom}/${dateTo}`
         ).pipe(
             map((priceSeries: any[]) => {
                 return priceSeries.map(price => {
@@ -73,7 +73,7 @@ export class BittrexService {
     retrieveAssetStartDate(symbol: string): Observable<Date> {
         return this.httpClient
             .get(
-                `http://localhost:8081/bittrex/startDate/${symbol}`
+                `http://localhost:4200/bittrex/startDate/${symbol}`
             ).pipe(
                 map((unixTimestamp: number) => {
                     return new Date(unixTimestamp * 1000);
@@ -83,7 +83,7 @@ export class BittrexService {
     retrieveAssetEndDate(symbol: string): Observable<Date> {
         return this.httpClient
             .get(
-                `http://localhost:8081/bittrex/endDate/${symbol}`
+                `http://localhost:4200/bittrex/endDate/${symbol}`
             ).pipe(
                 map((unixTimestamp: number) => {
                     return new Date(unixTimestamp * 1000);

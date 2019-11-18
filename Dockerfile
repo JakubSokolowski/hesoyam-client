@@ -10,7 +10,9 @@ FROM npm_builder as builder
 COPY . /usr/hesoyam-client
 ENV PATH /usr/hesoyam-client/node_modules/.bin:$PATH
 WORKDIR /usr/hesoyam-client
-RUN npm run build
+RUN npm run build:prod
 
 FROM nginx
 COPY --from=builder /usr/hesoyam-client/dist /usr/share/nginx/html
+
+#CMD ["npm", "run", "docker-start"]
